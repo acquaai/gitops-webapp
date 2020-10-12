@@ -1,0 +1,13 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: gitops-webapp-ir
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`webapp.dev.tcloudsoft.com`)
+      kind: Rule
+      services:
+        - name: gitops-webapp-svc
+          port: 80
